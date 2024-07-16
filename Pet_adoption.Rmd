@@ -35,10 +35,33 @@ suppressPackageStartupMessages(library(tidyverse, quietly = TRUE))
 suppressPackageStartupMessages(library(ggplot2))
 suppressPackageStartupMessages(library(dplyr))
 
-# Load data
-Pet_adopted <- read_csv("Dataset(pet_adoption_data, show_col_types = FALSE)")
 ```
 
 ##Introduction
 
 ###
+
+##<EDA>
+```{r}
+pet_data <- read.csv(pet_adoption_data)
+```
+
+```{r}
+pet_adoption_data <- pet_data
+```
+
+* It was hard to load data in first chunk, therefore I found to load data and changed its name.
+
+```{r}
+ggplot(pet_adoption_data) +
+  geom_bar(mapping = aes(x = PetType, fill = PetType), stat = "count", color = "black") +
+  labs(title = "Ratio of Pet Type", x = "Pet Type", y = "Count")
+```
+* First, I analyzed the dataset which PerType are proportioned. This graph shows that the Dog has the most while Bird has the least.
+
+```{r}
+pet_adoption_data$AgeMonths <- ifelse(is.na(pet_adoption_data$AgeMonths), 0, pet_adoption_data$AgeMonths)
+
+pet_adoption_data$AgeGroup = cut(pet_adoption_data$AgeMonths,
+                                 breaks = c(0, 30, 60, 90, 120, 150, 180, Inf),                                 labels = c("0-30 months", "31-60 months", "61-90 months", "91-120 months", "121-150 months", "151-180 months", "181+ months"), right = FALSE)
+```
