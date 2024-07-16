@@ -1,0 +1,44 @@
+---
+title: "Pet adoption"
+author: "Group 2"
+date: "r Sys.Date()"
+output: pdf_document
+  pdf_document:
+    highlight: tango
+    toc: false
+    df_print: kable
+    fig_caption: no
+    number_sections: no
+    dev: pdf
+  html_document:
+    highlight: tango
+    self_contained: true
+    theme: paper
+    toc: no
+    df_print: kable
+    fig_caption: no
+    number_sections: no
+    smart: yes
+    dev: svg
+geometry: margin=1in
+fontsize: 11pt
+documentclass: article
+---
+
+```{r setup, include = FALSE}
+# DO NOT ALTER CODE IN THIS CHUNK
+# Set knitr options
+knitr::opts_chunk$set(echo = TRUE)
+
+# Load required packages
+suppressPackageStartupMessages(library(tidyverse, quietly = TRUE))
+suppressPackageStartupMessages(library(ggplot2))
+suppressPackageStartupMessages(library(dplyr))
+
+# Load data
+Pet_adopted <- read_csv("Dataset(pet_adoption_data, show_col_types = FALSE)")
+```
+
+##Introduction
+
+###
